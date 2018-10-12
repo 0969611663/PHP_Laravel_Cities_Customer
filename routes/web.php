@@ -11,6 +11,8 @@
 |
 */
 
+use Illuminate\Support\Facades\Route;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -31,6 +33,20 @@ Route::group(['prefix' => 'customers'], function () {
 
     Route::get('/{id}/destroy','CustomerController@destroy')->name('customer_destroy');
 
+});
 
+//tao group route tasks
+Route::group(['prefix' => 'tasks'], function (){
 
+    Route::get('/','TaskController@index')->name('tasks_index');
+
+    Route::get('/create','TaskController@create')->name('tasks_create');
+
+    Route::post('/create','TaskController@store')->name('tasks_store');
+
+    Route::get('/{id}/edit','TaskController@edit')->name('tasks_edit');
+
+    Route::post('/{id}/edit','TaskController@update')->name('tasks_update');
+
+    Route::get('/{id}/destroy','TaskController@destroy')->name('tasks_destroy');
 });
