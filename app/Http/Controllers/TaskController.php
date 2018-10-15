@@ -42,7 +42,7 @@ class TaskController extends Controller
         $task->title = $request->input('title');
         $task->content = $request->input('content');
 
-        //upload file
+        //upload anh
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $path = $image->store('images', 'public');
@@ -96,7 +96,6 @@ class TaskController extends Controller
 
         //cap nhat anh
         if ($request->hasFile('image')) {
-
             //xoa anh cu neu co
             $currentImg = $task->image;
             if ($currentImg) {
